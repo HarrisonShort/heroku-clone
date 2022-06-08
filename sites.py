@@ -38,7 +38,7 @@ def create_pulumi_program(content: str):
         "bucket-policy",
         bucket=site_bucket.id,
         policy=site_bucket.id.apply(
-            lambda id: json.dumps{
+            lambda id: json.dumps(
                 {
                     "Version": "2012-10-17",
                     "Statement": {
@@ -49,7 +49,7 @@ def create_pulumi_program(content: str):
                         "Resource": [f"arn:aws:s3:::{id}/*"]
                     }
                 }
-            }
+            )
         )
     )
 
